@@ -28,33 +28,16 @@
     });
 </script>
 <div class='timelist'>
-    <div class="row">
-        <div class="four columns person" rel='1'>
-            <a href='#' class='big blue button person-time'>Amy</a>
-            <div class='totaltime' value='0'>0:00</div>
-        </div>
-        <div class="four columns person" rel='2'>
-            <a href='#' class='big blue button person-time'>Doug</a>
-            <div class='totaltime' value='0'>0:00</div>
-        </div>
-        <div class="four columns person" rel='3'>
-            <a href='#' class='big blue button person-time'>George</a>
-            <div class='totaltime' value='0'>0:00</div>
-        </div>
-    </div>
     <div class='row'>
-        <div class="four columns person" rel='4'>
-            <a href='#' class='big blue button person-time'>Fred</a>
-            <div class='totaltime' value='0'>0:00</div>
+    {% for x in meeting.people.all %}
+        {% if forloop.counter|divisibleby:"3" %}
+            </div><div class="row">
+        {% endif %}
+        <div class="four columns person" rel='{{x.pk}}'>
+            <a href='#' class='big blue button person-time'>{{x.name}}</a>
+            <div class='totaltime' value='{{x.totaltime}}'>0:00</div>
         </div>
-        <div class="four columns person" rel='5'>
-            <a href='#' class='big blue button person-time'>James</a>
-            <div class='totaltime' value='0'>0:00</div>
-        </div>
-        <div class="four columns person" rel='6'>
-            <a href='#' class='big blue button person-time'>Mike</a>
-            <div class='totaltime' value='0'>0:00</div>
-        </div>
+    {% endfor %}
     </div>
 </div>
 <div class="row">
