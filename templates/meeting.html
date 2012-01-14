@@ -56,7 +56,7 @@
             $('.timelist').find('.totaltime').attr('value', '0');
             return false;
         });
-        $('.person-time').on('click',function(){
+        $('.person-time').live('click',function(){
             if (running == false){
                 $('#pause').text('Pause');
             }
