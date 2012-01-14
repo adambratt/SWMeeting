@@ -108,9 +108,9 @@
         {% if forloop.counter|divisibleby:"3" %}
             </div><div class="row">
         {% endif %}
-        <div class="four columns person" rel='{% if x.pk %}{{x.pk}}{% else %}0{% endif %}'>
-            <a href='#' class='big blue button person-time'>{{x.name}}</a>
-            <div class='totaltime' value='{{x.totaltime}}'>0:00</div>
+        <div class="four columns person" rel='{{x.pk}}'>
+            <a href='#' class='big blue button person-time'>{{x.attendee.name}}</a>
+            <div class='totaltime' value='{% if x.overalltime %}{{x.overalltime}}{% else %}0{% endif %}'>0:00</div>
         </div>
     {% endfor %}
     </div>
