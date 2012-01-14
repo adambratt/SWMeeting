@@ -74,7 +74,7 @@
 				var lasttimer_id = lasttimer.parent().attr('rel');
 				lasttimer.removeClass('active');
 				if (lasttimer_id > 0){
-					$.post('/ajax/log/'+meeting+'/'+id+'/', {'time_start': overalltime-currenttime, 'time_end': currenttime}, function(data){
+					$.post('/ajax/log/'+meeting+'/'+id+'/', {'time_start': overalltime-currenttime, 'time_end': overalltime}, function(data){
 						//Do cool shit
 					});
 				}
