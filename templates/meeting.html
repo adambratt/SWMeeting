@@ -40,6 +40,8 @@
             return false;
         });
         $('#pause').click(function(){
+            if( !currenttimer)
+                return false;
             if ( running ){
                 running = false;
                 $(this).text('Resume');
@@ -124,7 +126,7 @@
 <div class="row">
     <div class='four columns'>
         <a href='#' class='big red button' id='reset'>Reset</a>
-        <a href='#' class='big blue button' id='pause'>Pause</a>
+        <a href='#' class='big blue button' id='pause'>Resume</a>
     </div>
     <div class='five columns'>
         <a href='#' class='big blue button right nice' id='divide'>Add</a>
