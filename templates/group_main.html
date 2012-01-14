@@ -14,7 +14,12 @@
                 return false;
             }
             $.post('/ajax/create_meeting/',{'name': $('#meeting').val()}, function(data){
-                location = '/meeting/'+$('#meeting').val()+'/';
+                var obj = $.parseJSON(data)
+                if ( obj.error ){
+                    alert(obj.error)
+                    return false;
+                }
+                location = '/meeting/'+obj.id+'/';
             });
             return false;
         });

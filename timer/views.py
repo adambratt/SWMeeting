@@ -76,9 +76,9 @@ def log(request, meeting_id, attendee_id):
 
 def create_meeting(request):
     if request.method != 'POST' or 'name' not in request.POST:
-        return HttpResponse('Invalid post info')
+        return HttpResponse('{"error":"Invalid meeting info"}')
     m=Meeting.objects.create(name=request.POST['name'])
-    return HttpResponse('Meeting Created')
+    return HttpResponse("{ 'id': '"+m.pk+"' }")
     
 def create_attendee(request):
     if request.method != 'POST' or 'name' not in request.POST:
