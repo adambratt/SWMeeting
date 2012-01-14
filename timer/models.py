@@ -5,7 +5,7 @@ from django.contrib.auth.models import User
 class Meeting(models.Model):
     name=models.CharField(max_length=128)
     group=models.ForeignKey('Group')
-    people=models.ManyToManyField('Attendee', related_name='attendee_list')
+    people=models.ManyToManyField('Attendee', through='Speaker', related_name='attendee_list')
     create_ts=models.DateTimeField(auto_now_add=True)
     def __unicode__(self):
         return self.name
@@ -17,6 +17,14 @@ class Attendee(models.Model):
     group=models.ForeignKey('Group')
     def __unicode__(self):
         return self.name
+
+class Speaker(models.Model):
+    attendee=models.ForeignKey('Attendee')
+    meeting=models.ForeignKey('Meeting')
+    overalltime=models.IntegerField()
+    create_ts=models.DateTimeField(auto_now_add=True)
+    def __unicode__(self):
+        return self.attendee.name
     
 class Time(models.Model):
     attendee=models.ForeignKey('Attendee')
