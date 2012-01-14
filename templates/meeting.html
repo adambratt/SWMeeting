@@ -104,7 +104,7 @@
 </script>
 <div class='row'>
     <div class='twelve columns'>
-        <h2><a href='/'>{{group.name}}</a> &raquo; {{meeting.name}}</h2>
+        <h3><a href='/'>{{group.name}}</a> &raquo; {{meeting.name}}</h3>
         <hr />
     </div>
 </div>
@@ -122,12 +122,13 @@
     </div>
 </div>
 <div class="row">
-    <div class='four columns'>
+    <div class='three columns'>
         <a href='#' class='big red button' id='reset'>Reset</a>
         <a href='#' class='big blue button' id='pause'>Pause</a>
     </div>
-    <div class='four columns'>
-        <a href='#' class='big blue button' id='divide'>Divide</a>
+    <div class='five columns'>
+        <input type='text' class='input-text' placeholder='Milestone'>
+        <a href='#' class='big blue button' id='divide'>Add</a>
     </div>
     <div class='four columns'>
         <h3 id='fulltime'></h3>
