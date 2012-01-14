@@ -35,6 +35,6 @@ class Milestone(models.Model):
 class Group(models.Model):
     name=models.CharField(max_length=128)
     urltag=models.CharField(max_length=30)
-    owner=models.ForeignKey('User')
+    owner=models.ForeignKey(User)
     def __unicode__(self):
         return self.urltag
