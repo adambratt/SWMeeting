@@ -74,6 +74,12 @@ def log(request, meeting_id, attendee_id):
         attendee = Attendee.objects.get(pk=attendee_id)
     except Attendee.DoesNotExist:
         return HttpResponse('{"error":"Invalid attendee info"}')
+    try:
+        speaker = Speaker.objects.get(attendee=attendee, meeting=meeting)
+    except Speaker.DoesNotExist:
+        return HttpResponse('{"error":"Invalid speaker info"}')
+    speaker.overalltime += request.POST['time_end']-request.POST['time_start']
+    speaker.save()
     t=Time.objects.create(meeting=meeting, attendee=attendee, time_start=request.POST['time_start'],time_end=request.POST['time_end'])
     return HttpResponse('Time Posted')
 
