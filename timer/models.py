@@ -6,6 +6,7 @@ class Meeting(models.Model):
     name=models.CharField(max_length=128)
     group=models.ForeignKey('Group')
     people=models.ManyToManyField('Attendee', through='Speaker', related_name='attendee_list')
+    time=models.IntegerField(default=0)
     create_ts=models.DateTimeField(auto_now_add=True)
     def __unicode__(self):
         return self.name
