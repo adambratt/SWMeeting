@@ -56,7 +56,7 @@ MEDIA_URL = ''
 # Don't put anything in this directory yourself; store your static files
 # in apps' "static/" subdirectories and in STATICFILES_DIRS.
 # Example: "/home/media/media.lawrence.com/static/"
-STATIC_ROOT = ''
+STATIC_ROOT = '/home/meeting/static'
 
 # URL prefix for static files.
 # Example: "http://media.lawrence.com/static/"
@@ -68,11 +68,7 @@ STATIC_URL = '/static/'
 ADMIN_MEDIA_PREFIX = '/static/admin/'
 
 # Additional locations of static files
-STATICFILES_DIRS = (
-    # Put strings here, like "/home/html/static" or "C:/www/django/static".
-    # Always use forward slashes, even on Windows.
-    # Don't forget to use absolute paths, not relative paths.
-)
+STATICFILES_DIRS = ( "/static", )
 
 # List of finder classes that know how to find static files in
 # various locations.
@@ -102,12 +98,6 @@ MIDDLEWARE_CLASSES = (
 
 ROOT_URLCONF = 'meeting.urls'
 
-TEMPLATE_DIRS = (
-    # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
-    # Always use forward slashes, even on Windows.
-    # Don't forget to use absolute paths, not relative paths.
-)
-
 INSTALLED_APPS = (
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -120,6 +110,13 @@ INSTALLED_APPS = (
      'timer',
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
+)
+
+TEMPLATE_DIRS = (
+    '/home/meeting/templates/',
+    # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
+    # Always use forward slashes, even on Windows.
+    # Don't forget to use absolute paths, not relative paths.
 )
 
 # A sample logging configuration. The only tangible logging

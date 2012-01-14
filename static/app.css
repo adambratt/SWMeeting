@@ -1,0 +1,33 @@
+/* Foundation v2.1.4 http://foundation.zurb.com */
+/* Artfully masterminded by ZURB  */
+
+/* -------------------------------------------------- 
+   Table of Contents
+-----------------------------------------------------
+:: Block styles
+*/
+
+
+/* -----------------------------------------
+   Block Styles
+----------------------------------------- */
+
+.person {
+    text-align: center;
+    margin-top: 15px;
+}
+
+.button.active {
+    background: green !important;
+}
+
+.timelist {
+    margin-bottom: 35px;
+}
+
+.button {
+    border: 1px solid white;
+    border-radius: 10px;
+}
+
+

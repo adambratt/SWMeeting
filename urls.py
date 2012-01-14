@@ -14,4 +14,9 @@ urlpatterns = patterns('',
 
     # Uncomment the next line to enable the admin:
      url(r'^admin/', include(admin.site.urls)),
+     url(r'^$','timer.home'),
+     url(r'^ajax/log/(?P<meeting_id>\w+)/(?P<attendee_id>\w+)/$', 'timer.log'),
+     url(r'^ajax/create_meeting/$', 'timer.create_meeting'),
+     url(r'^ajax/create_attendee/$', 'timer.create_attendee'),
+     url(r'^ajax/add_attendee/(?P<meeting_id>\w+)/(?P<attendee_id>\w+)/$', 'timer.add_attendee'),
 )

@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+
+<!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html lang="en"> <!--<![endif]-->
+<head>
+	<meta charset="utf-8" />
+
+	<!-- Set the viewport width to device width for mobile -->
+	<meta name="viewport" content="width=device-width" />
+
+	<title>Meeting Metrics</title>
+  
+	<!-- Included CSS Files -->
+	<link rel="stylesheet" href="stylesheets/foundation.css">
+	<link rel="stylesheet" href="stylesheets/app.css">
+
+	<!--[if lt IE 9]>
+		<link rel="stylesheet" href="stylesheets/ie.css">
+	<![endif]-->
+
+
+	<!-- IE Fix for HTML5 Tags -->
+	<!--[if lt IE 9]>
+		<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+	
+	<script src="https://www.google.com/jsapi?key=ABQIAAAAvQQmUH3Ff2x8mUCPcFUu8RQbqwcvo6K3p5mjESH3p_3Lz8o-chTGtlqZ8B-YGYvmoRmYUCCxHeMzvg" type="text/javascript"></script>
+	<script type='text/javascript'>
+		 google.load("jquery", "1.6.2");
+		 google.load("jqueryui", "1.8.16");
+	</script>
+	<script type='text/javascript'>
+		var running = false;
+		var overalltime = 0;
+		var currenttimer = 0;
+		var currenttime = 0;
+		var dividetimer = 0;
+		var meeting = 1;
+		$(function(){
+			$('#divide').click(function(){
+				var divtime = dividetimer;
+				dividetimer = 0;
+				$('.listing').append('<li>Time: '+formatTime(overalltime)+' Duration: '+formatTime(divtime)+'</li>');
+				return false;
+			});
+			$('#pause').click(function(){
+				if ( running ){
+					running = false;
+					$(this).text('Resume');
+				} else {
+					running = true;
+					$(this).text('Pause');
+				}
+				return false;
+			});
+			$('#reset').click(function(){
+				running = false;
+				overalltime = 0;
+				currenttime = 0;
+				dividetimer = 0;
+				currenttimer = 0;
+				$('.timelist').find('.totaltime').attr('value', '0');
+				return false;
+			});
+			$('.person-time').click(function(){
+				var id = $(this).parent().attr('rel');
+				if (currenttimer == id && running)
+					return;
+				// Log the last timer
+				var lasttimer = $('.timelist').find('.active');
+				var lasttimer_id = lasttimer.parent().attr('rel');
+				lasttimer.removeClass('active');
+				if (lasttimer_id > 0){
+					$.post('/ajax/log/'+meeting+'/'+id+'/', {'time_start': overalltime-currenttime, 'time_end': currenttime}, function(data){
+						//Do cool shit
+					});
+				}
+				// Switch to the current timer
+				currenttimer = id;
+				currenttime = 0;
+				running = true;
+				$(this).addClass('active');
+				return false;
+			});
+			updateTimes();
+		});
+		function updateTimes(){
+			if ( currenttimer > 0 && running ){
+				var timer = $('.person[rel='+currenttimer+']').find('.totaltime');
+				var currvalue = timer.attr('value');
+				timer.attr('value', parseInt(currvalue)+1);
+				currenttime += 1;
+			}
+			if ( running ){
+				overalltime += 1;
+				dividetimer += 1;
+			}
+			$('.timelist .person').each(function(){
+				var tmptimer = $(this).find('.totaltime');
+				tmptimer.text(formatTime(tmptimer.attr('value')));
+			});
+			$('#fulltime').text(formatTime(overalltime));
+			setTimeout("updateTimes()", 1000);
+		}
+		function formatTime(origsecs){
+			origsecs = parseInt(origsecs);
+			
+			var hours = Math.floor(origsecs / (60 * 60));
+			
+			var divisor_for_minutes = origsecs % (60 * 60);
+			var minutes = Math.floor(divisor_for_minutes / 60);
+			if (minutes < 10) minutes = "0"+minutes;
+			
+			var divisor_for_seconds = divisor_for_minutes % 60;
+			var seconds = Math.ceil(divisor_for_seconds);
+			if (seconds < 10) seconds = "0"+seconds;
+			
+			return hours+":"+minutes+":"+seconds;	
+		}
+	</script>
+</head>
+<body>
+
+	<!-- container -->
+	<div class="container">
+		<div class="row">
+			<div class="twelve columns">
+				<h2>Meeting Metrics</h2>
+				<hr />
+			</div>
+		</div>
+		<div class='timelist'>
+			<div class="row">
+				<div class="four columns person" rel='1'>
+					<a href='#' class='big blue button person-time'>Amy</a>
+					<div class='totaltime' value='0'>0:00</div>
+				</div>
+				<div class="four columns person" rel='2'>
+					<a href='#' class='big blue button person-time'>Doug</a>
+					<div class='totaltime' value='0'>0:00</div>
+				</div>
+				<div class="four columns person" rel='3'>
+					<a href='#' class='big blue button person-time'>George</a>
+					<div class='totaltime' value='0'>0:00</div>
+				</div>
+			</div>
+			<div class='row'>
+				<div class="four columns person" rel='4'>
+					<a href='#' class='big blue button person-time'>Fred</a>
+					<div class='totaltime' value='0'>0:00</div>
+				</div>
+				<div class="four columns person" rel='5'>
+					<a href='#' class='big blue button person-time'>James</a>
+					<div class='totaltime' value='0'>0:00</div>
+				</div>
+				<div class="four columns person" rel='6'>
+					<a href='#' class='big blue button person-time'>Mike</a>
+					<div class='totaltime' value='0'>0:00</div>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class='four columns'>
+				<a href='#' class='big red button' id='reset'>Reset</a>
+				<a href='#' class='big blue button' id='pause'>Pause</a>
+			</div>
+			<div class='four columns'>
+				<a href='#' class='big blue button' id='divide'>Divide</a>
+			</div>
+			<div class='four columns'>
+				<h3 id='fulltime'></h3>
+			</div>
+		</div>
+		<div>
+			<ul class='listing'>
+			</ul>
+		</div>
+	</div>
+	<!-- container -->
+
+	<!-- Included JS Files -->
+	<script src="javascripts/foundation.js"></script>
+	<script src="javascripts/app.js"></script>
+
+</body>
+</html>
