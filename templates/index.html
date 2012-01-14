@@ -66,6 +66,9 @@
 				return false;
 			});
 			$('.person-time').click(function(){
+				if (running == false){
+					$('#pause').text('Resume');
+				}
 				var id = $(this).parent().attr('rel');
 				if (currenttimer == id && running)
 					return;
