@@ -113,16 +113,14 @@
 </div>
 <div class='row'>
     <form method='post' class='nice custom'>
-        <div class='three columns'>
+        <div class='five columns'>
+            <input type='submit' href='#' id='add-person' class='nice button radius white right' value='Add Attendee'>
             <select id='choose-person'>
                 <option value=''>Select Person</option>
                 {% for x in group.attendee_set.all %}
                 <option value='{{x.pk}}'>{{x.name}}</option>
                 {% endfor %}
             </select>
-        </div>
-        <div class='two columns'>
-            <input type='submit' href='#' id='add-person' class='nice button radius white right' value='Add Attendee'>
         </div>
     </form>
 </div>
