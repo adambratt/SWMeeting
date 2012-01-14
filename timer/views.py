@@ -77,7 +77,11 @@ def log(request, meeting_id, attendee_id):
 def create_meeting(request):
     if request.method != 'POST' or 'name' not in request.POST:
         return HttpResponse('{"error":"Invalid meeting info"}')
-    m=Meeting.objects.create(name=request.POST['name'])
+    try:
+        group = Group.objects.get(owner=request.user)
+    except Group.DoesNotExist:
+        return HttpResponse('{"error":"Invalid group authentication"}')
+    m=Meeting.objects.create(name=request.POST['name'], group=group)
     return HttpResponse('{ "id": "'+str(m.pk)+'" }')
     
 def create_attendee(request):
