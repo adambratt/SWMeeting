@@ -106,7 +106,10 @@ def add_attendee(request, meeting_id, attendee_id):
         attendee = Attendee.objects.get(pk=attendee_id)
     except Attendee.DoesNotExist:
         return HttpResponse('{"error":"Invalid attendee"}')
-    speaker = Speaker.objects.create(attendee=attendee, meeting=meeting)
+    try:
+        speaker = Speaker.objects.get(attendee=attendee, meeting=meeting)
+    except Speaker.DoesNotExist:
+        speaker = Speaker.objects.create(attendee=attendee, meeting=meeting)
     return HttpResponse('{"id":"'+str(speaker.pk)+'"}')
     
 def display(request, template, dict={}):
