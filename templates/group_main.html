@@ -2,9 +2,27 @@
 {% block pagetitle %}{{group.name}} Home{% endblock %}
 
 {% block content %}
+<script type='text/javascript'>
+    $(function(){
+        $('#meeting').click(function(){
+            if ( $(this).val() == 'add meeting'){
+                $(this).val('');
+            }
+        });
+        $('#add-meeting').click(function(){
+            if ( $('#meeting').val() == 'add meeting' || $('#meeting').val() == ''){
+                return false;
+            }
+            $.post('/ajax/create_meeting/',{'name': $('#meeting').val()}, function(data){
+                location = '/meeting/'+$('#meeting').val()+'/';
+            });
+            return false;
+        });
+    });
+</script>
 <div class='row'>
     <div class='twelve columns'>
-        <h2>{{group.name}} home</h2>
+        <h2>{{group.name}} Home</h2>
     </div>
 </div>
 <div class='row'>
@@ -19,8 +37,8 @@
         {% else %}
             <i>No meetings</i>
         {% endif %}
-        <input type='text' name='meeting' value='add meeting' />
-        <a href='#' class='small button blue'>Add</a>
+        <input type='text' name='meeting' value='add meeting' id='meeting' />
+        <a href='#' class='small button blue' id='add-meeting' >Add</a>
     </div>
     <div class='eight columns'>
         Welcome to your homepage {{test}}

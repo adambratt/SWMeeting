@@ -15,6 +15,15 @@ def home(request):
 def timer(request):
     return
 
+def meeting(request, meeting_id):
+    try:
+        meeting = Meeting.objects.get(pk=meeting_id)
+    except Meeting.DoesNotExist:
+        return HttpResponse("invalid meeting")
+    if meeting.group.owner != request.user:
+        return HttpResponse("You don't have access to this!")
+    return render(request, 'meeting.html', {'meeting': meeting, 'group': meeting.group})
+
 def redirectme(request):
     if request.user.is_authenticated():
         try:
