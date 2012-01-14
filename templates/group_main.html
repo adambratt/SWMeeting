@@ -36,7 +36,7 @@
         {% if group.meeting_set.all.count %}
         <ul>
             {% for x in group.meeting_set.all %}
-            <li>{{x.name}}</li>
+            <li><a href='/meeting/{{x.pk}}'>{{x.name}}</a></li>
             {% endfor %}
         </ul>
         {% else %}
