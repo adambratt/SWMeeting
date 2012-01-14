@@ -111,6 +111,17 @@
         <hr />
     </div>
 </div>
+<div class='row'>
+    <div class='five columns'>
+        <a href='#' id='add-person' class='nice button radius white right'>Add Attendee</a>
+        <select id='choose-person'>
+            <option value=''>Select Person</option>
+            {% for x in group.attendee_set.all %}
+            <option value='{{x.pk}}'>{{x.name}}</option>
+            {% endfor %}
+        </select>
+    </div>
+</div>
 <div class='timelist'>
     <div class='row'>
     {% for x in meeting.speaker_set.all %}
@@ -136,15 +147,6 @@
     <div class='two offset-by-one columns'>
         <h3 id='fulltime'></h3>
     </div>
-</div>
-<div class='row'>
-    <select id='choose-person'>
-        <option value=''>Select Person</option>
-        {% for x in group.attendee_set.all %}
-        <option value='{{x.pk}}'>{{x.name}}</option>
-        {% endfor %}
-    </select>
-    <a href='#' id='add-person' class='nice button radius white'>Add Attendee</a>
 </div>
 <div>
     <ul class='listing'>
