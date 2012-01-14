@@ -5,6 +5,24 @@
 {% if meeting.finished %}
     Done!
 {% else %}
+<script type='text/javascript'>
+    $(function(){
+        $('#add-person').click(function(){
+           var person = $('#choose-person:selected').text();
+           var personid = $('#choose-person:selected').text();
+           if (personid){
+                var last = $('.timelist').children(':last');
+                var code = "<div class='four columns person' rel='"+personid+"'><a href='#' class='big blue button person-time'>"+person+"</div><div class='totaltime' value='0'>0:00</div></div>";
+                if (last.children().length > 2){
+                    $('<div class="row">'+code+'</div>').insertAfter(last);
+                } else {
+                    last.append(code)
+                }
+           }
+           return false;
+        });
+    });
+</script>
 <div class='timelist'>
     <div class="row">
         <div class="four columns person" rel='1'>
@@ -46,6 +64,15 @@
     <div class='four columns'>
         <h3 id='fulltime'></h3>
     </div>
+</div>
+<div class='row'>
+    <select id='choose-person'>
+        <option value=''>Select Person</option>
+        {% for x in group.people.all %}
+        <option value='{{x.pk}}'>{{x.name}}</option>
+        {% endfor %}
+    </select>
+    <a href='#' id='add-person'>Add Attendee</a>
 </div>
 <div>
     <ul class='listing'>
