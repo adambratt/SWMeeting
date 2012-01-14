@@ -105,13 +105,13 @@
 <div class='timelist'>
     <div class='row'>
     {% for x in meeting.speaker_set.all %}
-        {% if forloop.counter|divisibleby:"3" %}
-            </div><div class="row">
-        {% endif %}
         <div class="four columns person" rel='{{x.attendee.pk}}'>
             <a href='#' class='big blue button person-time'>{{x.attendee.name}}</a>
             <div class='totaltime' value='{% if x.overalltime %}{{x.overalltime}}{% else %}0{% endif %}'>0:00</div>
         </div>
+        {% if forloop.counter|divisibleby:"3" %}
+            </div><div class="row">
+        {% endif %}
     {% endfor %}
     </div>
 </div>
