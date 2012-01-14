@@ -102,6 +102,12 @@
         setTimeout("updateTimes()", 1000);
     }
 </script>
+<div class='row'>
+    <div class='twelve columns'>
+        <h2><a href='/'>{{group}}</a> &raquo; {{meeting.name}}</h2>
+        <hr />
+    </div>
+</div>
 <div class='timelist'>
     <div class='row'>
     {% for x in meeting.speaker_set.all %}
