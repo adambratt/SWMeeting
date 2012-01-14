@@ -3,6 +3,7 @@ from django.http import Http404, HttpResponse
 from timer.models import Meeting, Attendee, Time, Group
 from timer.forms import RegistrationForm
 from django.contrib.auth.models import User
+from django.contrib.auth import authenticate, login, logout
 
 # Homepage views
 def home(request):
