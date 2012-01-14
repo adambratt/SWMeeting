@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.http import Http404, HttpResponse
-from timer.models import Meeting, Attendee, Time, Group
+from timer.models import Meeting, Attendee, Time, Group, Speaker
 from timer.forms import RegistrationForm
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
@@ -101,13 +101,13 @@ def add_attendee(request, meeting_id, attendee_id):
     try:
         meeting = Meeting.objects.get(pk=meeting_id)
     except Meeting.DoesNotExist:
-        return HttpResponse("{'error':'Invalid meeting'}")
+        return HttpResponse('{"error":"Invalid meeting"}')
     try:
         attendee = Attendee.objects.get(pk=attendee_id)
     except Attendee.DoesNotExist:
-        return HttpResponse("{'error':'Invalid attendee'}")
-    meeting.people.add(attendee)
-    return HttpResponse('Attendee added')
+        return HttpResponse('{"error":"Invalid attendee"}')
+    speaker = Speaker.objects.create(attendee=attendee, meeting=meeting)
+    return HttpResponse('{"id":"'+speaker.pk+'"}')
     
 def display(request, template, dict={}):
     try:

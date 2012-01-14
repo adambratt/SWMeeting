@@ -21,7 +21,7 @@ class Attendee(models.Model):
 class Speaker(models.Model):
     attendee=models.ForeignKey('Attendee')
     meeting=models.ForeignKey('Meeting')
-    overalltime=models.IntegerField()
+    overalltime=models.IntegerField(default=0)
     create_ts=models.DateTimeField(auto_now_add=True)
     def __unicode__(self):
         return self.attendee.name

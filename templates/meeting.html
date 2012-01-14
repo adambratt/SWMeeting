@@ -11,20 +11,22 @@
     var currenttimer = 0;
     var currenttime = 0;
     var dividetimer = 0;
-    var meeting = 1;
+    var meeting = {{meeting.pk}};
     $(function(){
         $('#add-person').click(function(){
            var person = $('#choose-person option:selected').text();
            var personid = $('#choose-person option:selected').val();
            if (personid){
                 if (! $('.person[rel='+personid+']').length){
-                    var last = $('.timelist').children(':last');
-                    var code = "<div class='four columns person' rel='"+personid+"'><a href='#' class='big blue button person-time'>"+person+"</a><div class='totaltime' value='0'>0:00</div></div>";
-                    if (last.children().length > 2){
-                        $('<div class="row">'+code+'</div>').insertAfter(last);
-                    } else {
-                        last.append(code)
-                    }
+                    $.get('/ajax/add_attendee/'+meeting+'/'+personid+'/',function (data){
+                        var last = $('.timelist').children(':last');
+                        var code = "<div class='four columns person' rel='"+personid+"'><a href='#' class='big blue button person-time'>"+person+"</a><div class='totaltime' value='0'>0:00</div></div>";
+                        if (last.children().length > 2){
+                            $('<div class="row">'+code+'</div>').insertAfter(last);
+                        } else {
+                           last.append(code)
+                        }
+                    });
                 }else{
                     //person already exists
                 }
