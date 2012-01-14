@@ -1,0 +1,25 @@
+{% extends 'index.html' %}
+{% block pagetitle %}Signup{% endblock %}
+
+{% block content %}
+<div id='middle'>
+	<form action="/register/" method="post">
+		{% for field in form.visible_fields %}
+        <div class="field-row clearfix">
+            {% if field.errors %}<div class='form-field-error'>{{field.errors}}</div>{% endif %}
+            <label>{{field.label_tag}}</label>
+            <div class='field-container'>
+                <div class='field'>{{field}}</div>
+                {% if field.help_text %}<div class='field-desc'>{{field.help_text}}</div>{% endif %}
+            </div>
+        </div>
+        {% endfor %}
+        {% for hidden in form.hidden_fields %}
+            {{hidden}}
+        {% endfor %}
+		<div>
+			<input type="submit" value="Submit" id='signup-submit' />
+		</div>
+	</form>
+</div>
+{% endblock %}

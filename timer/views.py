@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.http import Http404, HttpResponse
 from timer.models import Meeting, Attendee, Time, Group
+from timer.forms import RegistrationForm
 
 # Homepage views
 def home(request):
@@ -17,6 +18,23 @@ def group(request, group_id):
     except Group.DoesNotExist:
         return HttpResponse("Invalid Group!!")
     return render(request,'group_main.html',{'group':group, 'test':request.subdomain})
+    
+def register(request):
+    if request.method=='POST':
+        form=RegistrationForm(request.POST)
+        if form.is_valid():
+            # Generate a username and create user
+            new_user=User.objects.create_user(form.cleaned_data['username'], form.cleaned_data['email'], form.cleaned_data['password1'])
+            #new_user.first_name=form.cleaned_data['first_name']
+            #new_user.last_name=form.cleaned_data['last_name']
+            new_user.save()
+            new_user = authenticate(username=username, password=form.cleaned_data['password1'])
+            login(request, new_user)
+            group=Group.objects.create(name=form.cleand_data['name'],urltag=form.cleaned_data['subdomain'])
+            return redirect(group.subdomain+'.meetrx.com');
+    else:
+        form=RegistrationForm()
+    return render(request,'registration.html',{'form':form})
 
 # AJAX
 def log(request, meeting_id, attendee_id):
