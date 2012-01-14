@@ -4,6 +4,8 @@ from timer.models import Meeting, Attendee, Time, Group
 
 # Homepage views
 def home(request):
+    if request.subdomain is not None:
+        return group(request, request.subdomain)
     return render(request,'index.html',{})
     
 def timer(request):
