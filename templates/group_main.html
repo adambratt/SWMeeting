@@ -23,6 +23,16 @@
             });
             return false;
         });
+        $('#attendee-add').click(function(){
+           var name=$('#attendee-name').val();
+           var email=$('#attendee-email').val();
+           if(name){
+                $.post('/ajax/create_attendee/',{'name': name, 'email': email},function(data){
+                    location.reload(true);
+                });
+           }
+           return false;
+        });
     });
 </script>
 <div class='row'>
@@ -47,6 +57,22 @@
     </div>
     <div class='eight columns'>
         Welcome to your homepage {{test}}
+        <div class='row'>
+            <div class='two columns' style='background: #ccc'>
+            </div>
+            <div class='ten columns'>
+                <div>Name: <input type='text' name='name' id='attendee-name' /></div>
+                <div>Email (optional): <input type='text' name='email' id='attendee-email' /></div>
+                <div><a href='#' id='attendee-add'>Add</a></div>
+            </div>
+        </div>
+        {% if group.attendee_set.all.count %}
+        <ul>
+            {% for x in group.attendee_set.all %}
+            <li>{{x.name}} ({{x.email}}) <a href='#'>delete</a></li>
+            {% endfor %}
+        </ul>
+        {% endif %}
     </div>
 </div>
 {% endblock %}

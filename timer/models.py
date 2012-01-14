@@ -12,6 +12,7 @@ class Meeting(models.Model):
     
 class Attendee(models.Model):
     name=models.CharField(max_length=128)
+    email=models.CharField(max_length=128, null=True)
     create_ts=models.DateTimeField(auto_now_add=True)
     group=models.ForeignKey('Group')
     def __unicode__(self):
