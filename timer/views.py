@@ -81,7 +81,7 @@ def log(request, meeting_id, attendee_id):
     speaker.overalltime = (int(request.POST['time_end'])-int(request.POST['time_start'])) + speaker.overalltime
     speaker.save()
     t=Time.objects.create(meeting=meeting, attendee=attendee, time_start=request.POST['time_start'],time_end=request.POST['time_end'])
-    meeting.time=request.POST['time_end']
+    meeting.totaltime=request.POST['time_end']
     meeting.save()
     return HttpResponse('Time Posted')
 
