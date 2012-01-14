@@ -14,7 +14,7 @@ def group(request, group_id):
         group = Group.objects.get(urltag=group_id)
     except Group.DoesNotExist:
         return HttpResponse("Invalid Group!!")
-    return render(request,'group_main.html',{'group':group})
+    return render(request,'group_main.html',{'group':group, 'test':request.subdomain})
 
 # AJAX
 def log(request, meeting_id, attendee_id):
