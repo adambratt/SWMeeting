@@ -11,12 +11,16 @@
            var person = $('#choose-person option:selected').text();
            var personid = $('#choose-person option:selected').val();
            if (personid){
-                var last = $('.timelist').children(':last');
-                var code = "<div class='four columns person' rel='"+personid+"'><a href='#' class='big blue button person-time'>"+person+"</div><div class='totaltime' value='0'>0:00</div></div>";
-                if (last.children().length > 2){
-                    $('<div class="row">'+code+'</div>').insertAfter(last);
-                } else {
-                    last.append(code)
+                if (! $('.person[rel='+personid+']').length){
+                    var last = $('.timelist').children(':last');
+                    var code = "<div class='four columns person' rel='"+personid+"'><a href='#' class='big blue button person-time'>"+person+"</a><div class='totaltime' value='0'>0:00</div></div>";
+                    if (last.children().length > 2){
+                        $('<div class="row">'+code+'</div>').insertAfter(last);
+                    } else {
+                        last.append(code)
+                    }
+                }else{
+                    //person already exists
                 }
            }
            return false;
