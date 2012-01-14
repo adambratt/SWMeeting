@@ -6,6 +6,7 @@
 	<div class='six columns'>
 		<h3>Login</h3>
 		<form action='/login/' method='post'>
+			{% csrf_token %}
 			{% if form.errors %}
 				<p class='form-field-error'>Your username and password didn't match. Please try again.</p>
 			{% endif %}

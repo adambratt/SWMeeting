@@ -6,6 +6,7 @@
 	<div class='six columns'>
 		<h3>Login</h3>
 		<form action='/login/' method='post'>
+			{% csrf_token %}
 			{% if form.errors %}
 				<p class='form-field-error'>Your username and password didn't match. Please try again.</p>
 			{% endif %}
@@ -30,6 +31,7 @@
 	<div class='six columns'>
 		<h3>Register</h3>
 		<form action="/register/" method="post">
+			{% csrf_token %}
 			{% for field in form.visible_fields %}
 			<div class="field-row clearfix">
 				{% if field.errors %}<div class='form-field-error'>{{field.errors}}</div>{% endif %}

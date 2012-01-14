@@ -4,6 +4,7 @@ from timer.models import Meeting, Attendee, Time, Group
 from timer.forms import RegistrationForm
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
+from django.views.decorators.csrf import csrf_protect
 
 # Homepage views
 def home(request):
@@ -21,6 +22,7 @@ def group(request, group_id):
         return HttpResponse("Invalid Group!!")
     return render(request,'group_main.html',{'group':group, 'test':request.subdomain})
     
+@csrf_protect
 def register(request):
     if request.method=='POST':
         form=RegistrationForm(request.POST)
