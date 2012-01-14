@@ -68,7 +68,7 @@
 <div class='row'>
     <select id='choose-person'>
         <option value=''>Select Person</option>
-        {% for x in group.people.all %}
+        {% for x in group.attendee_set.all %}
         <option value='{{x.pk}}'>{{x.name}}</option>
         {% endfor %}
     </select>
