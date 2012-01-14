@@ -5,7 +5,27 @@
 <div class='row'>
 	<div class='six columns'>
 		<h3>Login</h3>
-		Login here....
+		<form action='/login/' method='post'>
+			{% if form.errors %}
+				<p class='form-field-error'>Your username and password didn't match. Please try again.</p>
+			{% endif %}
+			<div class="field-row clearfix">
+				<label>Username</label>
+				<div class='field-container'>
+					<div class='field'><input type="text" name="username" value="" id="username-login" /></div>
+				</div>
+			</div>
+			<div class="field-row clearfix">
+				<label>Password</label>
+				<div class='field-container'>
+					<div class='field'><input type="password" name="password" value="" id="password-login" /></div>
+				</div>
+			</div>
+			<input type="hidden" name="next" value="{{ NEXT }}" />
+			<div>
+				<input type="submit" value="Login" />
+			</div>
+		</form>
 	</div>
 	<div class='six columns'>
 		<h3>Register</h3>
