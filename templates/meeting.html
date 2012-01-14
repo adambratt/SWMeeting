@@ -8,8 +8,8 @@
 <script type='text/javascript'>
     $(function(){
         $('#add-person').click(function(){
-           var person = $('#choose-person:selected').text();
-           var personid = $('#choose-person:selected').text();
+           var person = $('#choose-person option:selected').text();
+           var personid = $('#choose-person option:selected').val();
            if (personid){
                 var last = $('.timelist').children(':last');
                 var code = "<div class='four columns person' rel='"+personid+"'><a href='#' class='big blue button person-time'>"+person+"</div><div class='totaltime' value='0'>0:00</div></div>";
