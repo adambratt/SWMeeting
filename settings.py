@@ -113,6 +113,9 @@ INSTALLED_APPS = (
     # 'django.contrib.admindocs',
 )
 
+LOGIN_REDIRECT_URL = '/home/'
+LOGIN_URL = '/login/'
+
 TEMPLATE_DIRS = (
     '/home/meeting/templates/',
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".

@@ -15,6 +15,16 @@ def home(request):
 def timer(request):
     return
 
+def redirectme(request):
+    if request.user.is_authenticated():
+        try:
+            group = Group.objects.get(owner=request.user)
+        except Group.DoesNotExist:
+            return HttpResponse("group error is broken")
+        return redirect('http://'+group.urltag+'.meetrx.com');
+    else:
+        return redirect('/login/');
+
 def group(request, group_id):
     try:
         group = Group.objects.get(urltag=group_id)

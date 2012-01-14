@@ -15,6 +15,7 @@ urlpatterns = patterns('',
     # Uncomment the next line to enable the admin:
      url(r'^admin/', include(admin.site.urls)),
      url(r'^$','timer.views.home'),
+     url(r'^home/$','timer.views.redirectme'),
      url(r'^register/$','timer.views.register'),
      url(r'^login/$', 'django.contrib.auth.views.login', {'template_name': 'login.html'}),
      url(r'^ajax/log/(?P<meeting_id>\w+)/(?P<attendee_id>\w+)/$', 'timer.views.log'),
