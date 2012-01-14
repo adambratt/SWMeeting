@@ -33,7 +33,7 @@ def register(request):
             new_user = authenticate(username=form.cleaned_data['username'], password=form.cleaned_data['password1'])
             login(request, new_user)
             group=Group.objects.create(name=form.cleaned_data['name'],urltag=form.cleaned_data['subdomain'], owner=new_user)
-            return redirect(group.urltag+'.meetrx.com');
+            return redirect('http://'+group.urltag+'.meetrx.com');
     else:
         form=RegistrationForm()
     return render(request,'registration.html',{'form':form})
