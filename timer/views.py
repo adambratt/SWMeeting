@@ -36,7 +36,7 @@ def redirectme(request):
 
 def group(request, group_id):
     try:
-        group = Group.objects.get(urltag=group_id)
+        group = Group.objects.get(urltag=group_id,owner=request.user)
     except Group.DoesNotExist:
         return HttpResponse("Invalid Group!!")
     return render(request,'group_main.html',{'group':group, 'test':request.subdomain})
