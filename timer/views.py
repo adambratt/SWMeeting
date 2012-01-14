@@ -1,10 +1,20 @@
 from django.shortcuts import render, redirect
 from django.http import Http404, HttpResponse
-from timer.models import Meeting, Attendee, Time
+from timer.models import Meeting, Attendee, Time, Group
 
 # Homepage views
 def home(request):
     return render(request,'index.html',{})
+    
+def timer(request):
+    return
+
+def group(request, group_id):
+    try:
+        group = Group.objects.get(urltag=group_id)
+    except Group.DoesNotExist:
+        return HttpResponse("Invalid Group!!")
+    return render(request,'group_main.html',{'group':group})
 
 # AJAX
 def log(request, meeting_id, attendee_id):
@@ -44,3 +54,11 @@ def add_attendee(request, meeting_id, attendee_id):
         return HttpResponse("{'error':'Invalid attendee'}")
     meeting.people.add(attendee)
     return HttpResponse('Attendee added')
+    
+def display(request, template, dict={}):
+    try:
+        group = Group.objects.get(owner=request.user)
+    except Group.DoesNotExist:
+        return HttpResponse("Invalid group!")
+    dict['group']=group
+    return render(request, template, dict)

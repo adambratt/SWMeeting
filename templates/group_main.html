@@ -1,0 +1,29 @@
+{% extends 'index.html' %}
+{% block pagetitle %}{{group.name}} Home{% endblock %}
+
+{% block content %}
+<div class='row'>
+    <div class='twelve columns'>
+        <h2>{{group.name}} home</h2>
+    </div>
+</div>
+<div class='row'>
+    <div class='four columns'>
+        <h3>Meetings</h3>
+        {% if group.meeting_list.all.count %}
+        <ul>
+            {% for x in group.meeting_list.all %}
+            <li>{{x.name}}</li>
+            {% endfor %}
+        </ul>
+        {% else %}
+            <i>No meetings</i>
+        {% endif %}
+        <input type='text' name='meeting' value='add meeting' />
+        <a href='#' class='small button blue'>Add</a>
+    </div>
+    <div class='eight columns'>
+        Welcome to your homepage
+    </div>
+</div>
+{% endblock %}

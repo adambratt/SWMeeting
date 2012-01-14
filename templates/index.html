@@ -71,7 +71,7 @@
 				}
 				var id = $(this).parent().attr('rel');
 				if (currenttimer == id && running)
-					return;
+					return false;
 				// Log the last timer
 				var lasttimer = $('.timelist').find('.active');
 				var lasttimer_id = lasttimer.parent().attr('rel');
