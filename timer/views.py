@@ -30,9 +30,9 @@ def register(request):
             #new_user.first_name=form.cleaned_data['first_name']
             #new_user.last_name=form.cleaned_data['last_name']
             new_user.save()
-            new_user = authenticate(username=username, password=form.cleaned_data['password1'])
+            new_user = authenticate(username=form.cleaned_data['username'], password=form.cleaned_data['password1'])
             login(request, new_user)
-            group=Group.objects.create(name=form.cleand_data['name'],urltag=form.cleaned_data['subdomain'])
+            group=Group.objects.create(name=form.cleaned_data['name'],urltag=form.cleaned_data['subdomain'])
             return redirect(group.subdomain+'.meetrx.com');
     else:
         form=RegistrationForm()
