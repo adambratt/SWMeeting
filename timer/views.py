@@ -69,11 +69,11 @@ def log(request, meeting_id, attendee_id):
     try:
         meeting = Meeting.objects.get(pk=meeting_id)
     except Meeting.DoesNotExist:
-        return HttpResponse("{'error':'Invalid meeting'}")
+        return HttpResponse('{"error":"Invalid meeting info"}')
     try:
         attendee = Attendee.objects.get(pk=attendee_id)
     except Attendee.DoesNotExist:
-        return HttpResponse("{'error':'Invalid attendee'}")
+        return HttpResponse('{"error":"Invalid attendee info"}')
     t=Time.objects.create(meeting=meeting, attendee=attendee, time_start=request.POST['time_start'],time_end=request.POST['time_end'])
     return HttpResponse('Time Posted')
 
@@ -89,9 +89,13 @@ def create_meeting(request):
     
 def create_attendee(request):
     if request.method != 'POST' or 'name' not in request.POST:
-        return HttpResponse('Invalid post info')
-    m=Attendee.objects.create(name=request.POST['name'])
-    return HttpResponse('Attendee Created')
+        return HttpResponse('{"error":"Invalid attendee info"}')
+    try:
+        group = Group.objects.get(owner=request.user)
+    except Group.DoesNotExist:
+        return HttpResponse('{"error":"Invalid group authentication"}')
+    m=Attendee.objects.create(name=request.POST['name'],email=request.POST['email'], group=group)
+    return HttpResponse('{"id": "'+str(m.pk)+'" }')
 
 def add_attendee(request, meeting_id, attendee_id):
     try:
