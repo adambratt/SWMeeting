@@ -10,9 +10,9 @@
 <div class='row'>
     <div class='four columns'>
         <h3>Meetings</h3>
-        {% if group.meeting_list.all.count %}
+        {% if group.meeting_set.all.count %}
         <ul>
-            {% for x in group.meeting_list.all %}
+            {% for x in group.meeting_set.all %}
             <li>{{x.name}}</li>
             {% endfor %}
         </ul>
