@@ -5,6 +5,7 @@ from timer.forms import RegistrationForm
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
 from django.views.decorators.csrf import csrf_protect
+from django.contrib.auth.decorators import login_required
 
 # Homepage views
 def home(request):
@@ -15,6 +16,7 @@ def home(request):
 def timer(request):
     return
 
+@login_required
 def meeting(request, meeting_id):
     try:
         meeting = Meeting.objects.get(pk=meeting_id)
@@ -34,6 +36,7 @@ def redirectme(request):
     else:
         return redirect('/login/');
 
+@login_required
 def group(request, group_id):
     try:
         group = Group.objects.get(urltag=group_id,owner=request.user)
