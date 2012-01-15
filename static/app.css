@@ -127,6 +127,7 @@ form.nice {
     line-height: 0;
     float: left;
     box-shadow: 0px 1px 3px 1px #aaa;
+    width: 325px;
 }
 
 .banner-p {
