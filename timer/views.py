@@ -25,9 +25,13 @@ def timer(request):
 
 @login_required
 def report(request, meeting_id):
-    if request.user:
-        pass
-    return render(request, 'report.html', {})
+    try:
+        meeting = Meeting.objects.get(pk=meeting_id)
+    except Meeting.DoesNotExist:
+        return HttpResponse("invalid meeting")
+    if meeting.group.owner != request.user:
+        return HttpResponse("You don't have access to this!")
+    return render(request, 'report.html', {'meeting': meeting, 'group': meeting.group})
 
 @login_required
 def meeting(request, meeting_id):
