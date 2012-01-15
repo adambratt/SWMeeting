@@ -76,6 +76,7 @@
             var lasttimer = $('.timelist').find('.active');
             var lasttimer_id = lasttimer.parent().attr('rel');
             lasttimer.removeClass('active');
+            lasttimer.parent().removeClass('selected');
             if (lasttimer_id > 0){
                 $.post('/ajax/log/'+meeting+'/'+lasttimer_id+'/', {'time_start': overalltime-currenttime, 'time_end': overalltime}, function(data){
                     //Do cool shit
@@ -86,6 +87,7 @@
             currenttime = 0;
             running = true;
             pt.addClass('active');
+            pt.parent().addClass('selected');
             pt.parent().find('.totaltime').stop().css("background-color", "#cc6").animate({ backgroundColor: "#666"}, 400);
             return false;
         });

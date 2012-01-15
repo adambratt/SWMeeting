@@ -100,3 +100,7 @@ form.nice {
     margin-bottom: 15px;
     padding: 20px 0px;
 }
+
+.person.selected {
+    background: #e9f0e9;
+}
