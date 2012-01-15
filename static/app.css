@@ -68,7 +68,8 @@ form.nice {
 #fulltime{
     border-radius: 25px;
     border: 1px solid black;
-    background: black;
+    background: #666;
+    box-shadow: inset 0px 1px 4px 1px #333;
     color: white;
 }
 
@@ -89,7 +90,7 @@ form.nice {
     padding: 5px;
     border-radius: 25px;
     width: 100px;
-    box-shadow: inset 0px 1px 4px 1px #333
+    box-shadow: inset 0px 1px 4px 1px #333;
 }
 
 .person {
