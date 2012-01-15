@@ -14,8 +14,8 @@ def home(request):
         return group(request, request.subdomain)
     if request.user.is_authenticated():    
         try:
-            group = Group.objects.get(owner=request.user)
-            return group(request, group.urltag)
+            grp = Group.objects.get(owner=request.user)
+            return group(request, grp.urltag)
         except Group.DoesNotExist:
             pass
     return render(request,'index.html',{})
