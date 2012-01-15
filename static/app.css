@@ -118,6 +118,14 @@ form.nice {
     z-index: 0;
 }
 
+.screenshot {
+    position: absolute;
+    top: 25px;
+    left: 50px;
+    border: 1px solid red;
+    float: left;
+}
+
 .ribbon {
     width: 978px;
     background: url('images/ribbon.png') no-repeat;
