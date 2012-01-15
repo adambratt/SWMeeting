@@ -133,12 +133,12 @@ form.nice {
     position: absolute;
     float: left;
     left: 470px;
-    top: 105px;
+    top: 120px;
     line-height: 24px;
     font-size: 16px;
     font-weight: bold;
     color: white;
-    text-shadow: 0px 1px 1px #999;
+    text-shadow: 0px 1px 1px #777;
 }
 
 .banner-title {
@@ -147,6 +147,7 @@ form.nice {
     text-shadow: 0px 1px 1px #fff;
     left: 470px;
     top: 50px;
+    font-size: 40px;
 }
 
 .ribbon {
