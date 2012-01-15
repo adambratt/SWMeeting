@@ -28,21 +28,21 @@
           // prevent the form from submitting with the default action
           return false;
         });
-        function stripeResponseHandler(status, response) {
-            if (response.error) {
-                //show the errors on the form
-                $(".payment-errors").html(response.error.message).show();
-            } else {
-                var form$ = $("#payment-form");
-                // token contains id, last4, and card type
-                var token = response['id'];
-                // insert the token into the form so it gets submitted to the server
-                form$.append("<input type='hidden' name='stripeToken' value='" + token + "'/>");
-                // and submit
-                form$.get(0).submit();
-            }
-        }
     });
+    function stripeResponseHandler(status, response) {
+        if (response.error) {
+            //show the errors on the form
+            $(".payment-errors").html(response.error.message).show();
+        } else {
+            var form$ = $("#payment-form");
+            // token contains id, last4, and card type
+            var token = response['id'];
+            // insert the token into the form so it gets submitted to the server
+            form$.append("<input type='hidden' name='stripeToken' value='" + token + "'/>");
+            // and submit
+            form$.get(0).submit();
+        }
+    }
 </script>
 <form action="" method="POST" id="payment-form" class='custom nice'>
     <div class='alert-box error hide payment-errors'></div>
