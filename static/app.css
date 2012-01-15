@@ -94,6 +94,7 @@ form.nice {
 
 .person {
     background: #EEE9E9;
+    cursor: pointer;
     border-radius: 15px;
     margin-top: 10px;
     margin-bottom: 15px;
