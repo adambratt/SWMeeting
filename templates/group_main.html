@@ -56,10 +56,16 @@
         {% else %}
         <p><i>No meetings</i></p>
         {% endif %}
+        {% if group.meeting_set.all.count and group.subbed == False %}
+        <p>
+            Please <a href='/payment/'>subscribe</a> if you wish to create more than one group
+        </p>
+        {% else %}
         <form method='post' action='#' class='custom nice'>
             <input type='text' name='meeting' placeholder='add meeting' id='meeting' class='input-text' />
             <a href='#' class='small button radius nice pink' id='add-meeting'>Add</a>
         </form>
+        {% endif %}
     </div>
     <div class='five columns'>
         <h3>Organization Setup</h3>
