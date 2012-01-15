@@ -153,8 +153,8 @@ form.nice {
 .ribbon {
     width: 978px;
     background: url('images/ribbon.png') no-repeat;
-    height: 50px;
-    padding-top: 30px;
+    height: 54px;
+    padding-top: 26px;
     position: relative;
     z-index: 4;
     top: -20px;
