@@ -116,7 +116,7 @@
     </div>
 </div>
 <div class='row'>
-    <form method='post' class='nice custom'>
+    <form method='post' class='nice custom' action='#'>
         <div class='four columns'>
             <input type='submit' href='#' id='add-person' class='nice button radius white right' value='Add Attendee'>
             <select id='choose-person'>
@@ -156,8 +156,10 @@
 </div>
 <div class="row">
     <div class='eight offset-by-two columns'>
-        <a href='#' class='radius blue button right nice' id='divide'>Add</a>
-        <input type='text' class='input-text large' placeholder='Milestone' style='margin-top: 6px;'>
+        <form method='post' action='#' class='nice custom' style='margin: 0'>
+            <a href='#' class='radius blue button right nice' id='divide'>Add</a>
+            <input type='text' class='input-text large' placeholder='Milestone' style='margin-top: 6px;'>
+        </form>
     </div>
 </div>
 <div class='row'>
