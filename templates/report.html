@@ -1,0 +1,11 @@
+{% extends 'index.html' %}
+{% block pagetitle %}{{meeting.name}} Meeting{% endblock %}
+
+{% block content %}
+<div class='row'>
+    <div class='twelve columns'>
+        <h3><a href='/'>{{group.name}}</a> &raquo; {{meeting.name}}</h3>
+        <hr />
+    </div>
+</div>
+{% endblock %}
