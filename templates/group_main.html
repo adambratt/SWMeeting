@@ -61,14 +61,14 @@
             <a href='#' class='small button radius nice pink' id='add-meeting'>Add</a>
         </form>
     </div>
-    <div class='four columns'>
+    <div class='five columns'>
         <h3>Organization Setup</h3>
         <p>
             Add members to your organization before you go into the meeting
         </p>
         <div class='row'>
             <div class='twelve columns'>
-                <form action='#'  method='post' class='nice custom'>
+                <form action='#'  method='post' class='nice custom' style='padding: 10px; border: 1px solid #d9d9d9;'>
                     <label>Name:</label>
                     <input type='text' name='name' id='attendee-name' class='input-text' />
                     <label>Email:</label>
@@ -78,7 +78,7 @@
             </div>
         </div>
     </div>
-    <div class='four columns'>
+    <div class='three columns'>
         <h3>People</h3>
         <p>Listing of people in your organization</p>
         {% if group.attendee_set.all.count %}
