@@ -42,8 +42,11 @@
     </div>
 </div>
 <div class='row'>
-    <div class='four columns'>
+    <div class='three columns'>
         <h3>Meetings</h3>
+        <p>
+            Create your meetings here
+        </p>
         {% if group.meeting_set.all.count %}
         <ul>
             {% for x in group.meeting_set.all %}
@@ -53,10 +56,12 @@
         {% else %}
         <p><i>No meetings</i></p>
         {% endif %}
-        <input type='text' name='meeting' value='add meeting' id='meeting' />
-        <a href='#' class='small button radius nice pink' id='add-meeting' >Add</a>
+        <form method='post' action='#' class='custom nice'>
+            <input type='text' name='meeting' value='add meeting' id='meeting' class='input-text' />
+            <a href='#' class='small button radius nice pink' id='add-meeting'>Add</a>
+        </form>
     </div>
-    <div class='eight columns'>
+    <div class='nine columns'>
         <h3>Organization Setup</h3>
         <p>
             Add members to your organization before you go into the meeting
