@@ -117,3 +117,13 @@ form.nice {
     position: relative;
     z-index: 0;
 }
+
+.ribbon {
+    width: 978px;
+    background: url('images/ribbon.png') no-repeat;
+    height: 80px;
+    position: relative;
+    z-index: 4;
+    top: -40px;
+    margin: 0 auto;
+}
