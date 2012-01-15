@@ -146,22 +146,22 @@
         {% endif %}
     {% endfor %}
     </div>
-    <div class='row'>
-        <div class='four columns centered'>
-            <form method='post' class='nice custom' action='#'>
-                <input type='submit' href='#' id='add-person' class='nice button radius white right' value='+'>
-                <select id='choose-person'>
-                    <option value=''>Select Person</option>
-                    {% for x in group.attendee_set.all %}
-                    <option value='{{x.pk}}'>{{x.name}}</option>
-                    {% endfor %}
-                </select>
-            </form>
-        </div>
-    </div>
 </div>
 <div class='row'>
-    <hr>
+    <div class='four columns centered'>
+        <form method='post' class='nice custom' action='#'>
+            <input type='submit' href='#' id='add-person' class='nice button radius white right' value='+'>
+            <select id='choose-person'>
+                <option value=''>Select Person</option>
+                {% for x in group.attendee_set.all %}
+                <option value='{{x.pk}}'>{{x.name}}</option>
+                {% endfor %}
+            </select>
+        </form>
+    </div>
+    <div>
+        <hr>
+    </div>
 </div>
 <div class="row">
     <div class='eight offset-by-two columns'>
