@@ -153,12 +153,14 @@ form.nice {
 .ribbon {
     width: 978px;
     background: url('images/ribbon.png') no-repeat;
-    height: 80px;
+    height: 50px;
+    padding-top: 30px;
     position: relative;
     z-index: 4;
     top: -20px;
     left: 1px;
     margin: 0 auto;
+    text-align: center;
 }
 
 .homecontent {
