@@ -30,23 +30,24 @@
 	</div>
 	<div class='six columns'>
 		<h3>Register</h3>
-		<form action="/register/" method="post">
+		<form action="/register/" method="post" class='custom nice'>
 			{% csrf_token %}
-			{% for field in form.visible_fields %}
-			<div class="field-row clearfix">
-				{% if field.errors %}<div class='form-field-error'>{{field.errors}}</div>{% endif %}
-				<label>{{field.label_tag}}</label>
-				<div class='field-container'>
-					<div class='field'>{{field}}</div>
-					{% if field.help_text %}<div class='field-desc'>{{field.help_text}}</div>{% endif %}
-				</div>
-			</div>
-			{% endfor %}
+			{% if form.errors %}<div class='alert-box error'>{{form.errors}}</div>{% endif %}
+			<label>Email</label>
+			<input type='text' name='email' class='input-text'>
+			<label>Username</label>
+			<input type='text' name='username' class='input-text'>
+			<label>Password</label>
+			<input type='password' name='password1' class='input-text'>
+			<label>Confirm Password</label>
+			<input type='password' name='password2' class='input-text'>
+			<label>Organization Name</label>
+			<input type='text' name='name' class='input-text'>
 			{% for hidden in form.hidden_fields %}
 				{{hidden}}
 			{% endfor %}
 			<div>
-				<input type="submit" value="Submit" id='signup-submit' />
+				<input type="submit" value="Submit" id='signup-submit' class='radius nice white button' />
 			</div>
 		</form>
 	</div>
