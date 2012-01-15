@@ -48,3 +48,8 @@ class Group(models.Model):
     owner=models.ForeignKey(User)
     def __unicode__(self):
         return self.urltag
+
+class Subscription(models.Model):
+    user=models.ForeignKey(User)
+    stripe=models.CharField(max_length=30)
+    create_ts=models.DateTimeField(auto_now_add=True)

@@ -1,11 +1,12 @@
 from django.shortcuts import render, redirect
 from django.http import Http404, HttpResponse
-from timer.models import Meeting, Attendee, Time, Group, Speaker
+from timer.models import Meeting, Attendee, Time, Group, Speaker, Subscription
 from timer.forms import RegistrationForm
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
 from django.views.decorators.csrf import csrf_protect
 from django.contrib.auth.decorators import login_required
+import stripe
 
 # Homepage views
 def home(request):
@@ -46,6 +47,12 @@ def group(request, group_id):
     
 @login_required
 def payment(request):
+    if request.method=='POST':
+        token = request.POST['stripeToken']
+        stripe.api_key = "bpwTsZOTdx7UjmAjToKeXOQz9gvBGYll"
+        customer = stripe.Customer.create(card=token, plan="monthly", email=request.user.email)
+        sub = Subscription.objects.create(user=request.user, stripe=customer.id)
+        return redirect('/');
     return render(request,'payment.html',{})
     
 @csrf_protect
