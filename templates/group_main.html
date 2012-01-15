@@ -61,7 +61,7 @@
             <a href='#' class='small button radius nice pink' id='add-meeting'>Add</a>
         </form>
     </div>
-    <div class='eight columns'>
+    <div class='four columns'>
         <h3>Organization Setup</h3>
         <p>
             Add members to your organization before you go into the meeting
@@ -77,11 +77,14 @@
                 </form>
             </div>
         </div>
+    </div>
+    <div class='four columns'>
+        <h3>People</h3>
+        <p>Listing of people in your organization</p>
         {% if group.attendee_set.all.count %}
-        <div>
         <ul>
             {% for x in group.attendee_set.all %}
-            <li>{{x.name}} ({{x.email}}) <a href='#'>delete</a></li>
+            <li>{{x.name}}</li>
             {% endfor %}
         </ul>
         {% endif %}
