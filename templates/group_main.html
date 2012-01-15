@@ -60,9 +60,13 @@
         <h3>Group Setup</h3>
         <div class='row'>
             <div class='twelve columns'>
-                <div>Name: <input type='text' name='name' id='attendee-name' /></div>
-                <div>Email (optional): <input type='text' name='email' id='attendee-email' /></div>
-                <div><a href='#' id='attendee-add' class='pink button radius nice big'>Add</a></div>
+                <form action='#'  method='post' class='nice custom'>
+                    <label>Name:</label>
+                    <input type='text' name='name' id='attendee-name' class='input-text' />
+                    <label>Email:</label>
+                    <input type='text' name='email' id='attendee-email' placeholder='optional' class='input-text' />
+                    <a href='#' id='attendee-add' class='pink button radius nice'>Add</a>
+                </form>
             </div>
         </div>
         {% if group.attendee_set.all.count %}
