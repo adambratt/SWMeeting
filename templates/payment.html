@@ -12,11 +12,17 @@
           $('.submit-button').attr("disabled", "disabled");
         
           var amount = 1000; //amount you want to charge in cents
+          
+          var expiry = $('.card-expiry').split("/");
+          if (expiry.length != 2 ){
+            $(".payment-errors").html("Expiration must be in MM/YYYY format");
+          }
+          
           Stripe.createToken({
               number: $('.card-number').val(),
               cvc: $('.card-cvc').val(),
-              exp_month: $('.card-expiry-month').val(),
-              exp_year: $('.card-expiry-year').val()
+              exp_month: expiry[0],
+              exp_year: expiry[1],
           }, amount, stripeResponseHandler);
         
           // prevent the form from submitting with the default action
@@ -25,7 +31,7 @@
         function stripeResponseHandler(status, response) {
             if (response.error) {
                 //show the errors on the form
-                $(".payment-errors").html(response.error.message);
+                $(".payment-errors").html(response.error.message).show();
             } else {
                 var form$ = $("#payment-form");
                 // token contains id, last4, and card type
@@ -39,6 +45,7 @@
     });
 </script>
 <form action="" method="POST" id="payment-form" class='custom nice'>
+    <div class='alert-box error hide payment-errors'></div>
     <label>Card Number</label>
     <input type="text" size="20" autocomplete="off" class="card-number input-text" />
     <label>CVC</label>
