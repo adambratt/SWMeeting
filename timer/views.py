@@ -68,6 +68,7 @@ def register(request):
     return render(request,'registration.html',{'form':form})
 
 # AJAX
+@login_required
 def log(request, meeting_id, attendee_id):
     if request.method != 'POST' or 'time_start' not in request.POST or 'time_end' not in request.POST:
         return HttpResponse('Invalid post info')
@@ -90,6 +91,7 @@ def log(request, meeting_id, attendee_id):
     meeting.save()
     return HttpResponse('Time Posted')
 
+@login_required
 def create_meeting(request):
     if request.method != 'POST' or 'name' not in request.POST:
         return HttpResponse('{"error":"Invalid meeting info"}')
@@ -99,7 +101,8 @@ def create_meeting(request):
         return HttpResponse('{"error":"Invalid group authentication"}')
     m=Meeting.objects.create(name=request.POST['name'], group=group)
     return HttpResponse('{ "id": "'+str(m.pk)+'" }')
-    
+
+@login_required    
 def create_attendee(request):
     if request.method != 'POST' or 'name' not in request.POST:
         return HttpResponse('{"error":"Invalid attendee info"}')
@@ -110,6 +113,7 @@ def create_attendee(request):
     m=Attendee.objects.create(name=request.POST['name'],email=request.POST['email'], group=group)
     return HttpResponse('{"id": "'+str(m.pk)+'" }')
 
+@login_required
 def add_attendee(request, meeting_id, attendee_id):
     try:
         meeting = Meeting.objects.get(pk=meeting_id)
