@@ -117,6 +117,7 @@ LOGIN_REDIRECT_URL = '/home/'
 LOGIN_URL = '/login/'
 
 CSRF_COOKIE_DOMAIN = '.meetrx.com'
+SESSION_COOKIE_DOMAIN = '.meetrx.com'
 
 TEMPLATE_DIRS = (
     '/home/meeting/templates/',
