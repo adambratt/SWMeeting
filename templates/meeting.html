@@ -127,8 +127,8 @@
         <h3 id='fulltime' class='center'></h3>
     </div>
     <div class='four columns'>
-        <a href='#' class='nice button radius red right reset' style='margin-left: 10px;'>Reset</a>
-        <a href='#' class='nice button radius blue right pause'>Resume</a>
+        <a href='#' class='nice button radius pink right reset' style='margin-left: 10px;'>Reset</a>
+        <a href='#' class='nice button radius white right pause'>Resume</a>
     </div>
 </div>
 <div class='row'>
@@ -138,7 +138,7 @@
     <div class='row'>
     {% for x in meeting.speaker_set.all %}
         <div class="four columns person" rel='{{x.attendee.pk}}'>
-            <a href='#' class='big blue button person-time'>{{x.attendee.name}}</a>
+            <a href='#' class='nice radius blue button person-time'>{{x.attendee.name}}</a>
             <div class='totaltime' value='{% if x.overalltime %}{{x.overalltime}}{% else %}0{% endif %}'>0:00</div>
         </div>
         {% if forloop.counter|divisibleby:"3" %}
@@ -152,7 +152,7 @@
 </div>
 <div class="row">
     <div class='eight offset-by-two columns'>
-        <a href='#' class='big blue button right nice' id='divide'>Add</a>
+        <a href='#' class='radius blue button right nice' id='divide'>Add</a>
         <input type='text' class='input-text large' placeholder='Milestone' style='margin-top: 6px;'>
     </div>
 </div>
