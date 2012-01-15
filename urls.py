@@ -25,6 +25,7 @@ urlpatterns = patterns('',
      url(r'^ajax/log/(?P<meeting_id>\w+)/(?P<attendee_id>\w+)/$', 'timer.views.log'),
      url(r'^ajax/create_meeting/$', 'timer.views.create_meeting'),
      url(r'^ajax/create_attendee/$', 'timer.views.create_attendee'),
+     url(r'^ajax/create_milestone/(?P<meeting_id>\w+)/$', 'timer.views.create_milestone'),
      url(r'^ajax/add_attendee/(?P<meeting_id>\w+)/(?P<attendee_id>\w+)/$', 'timer.views.add_attendee'),
      url(r'^(?P<group_id>\w+)/$', 'timer.views.group'),
 )

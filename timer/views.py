@@ -137,6 +137,17 @@ def create_attendee(request):
     return HttpResponse('{"id": "'+str(m.pk)+'" }')
 
 @login_required
+def create_milestone(request, meeting_id):
+    if request.method != 'POST' or 'name' not in request.POST:
+        return HttpResponse('{"error":"Invalid milestone"}')
+    try:
+        meeting = Meeting.objects.get(pk=meeting_id)
+    except Meeting.DoesNotExist:
+        return HttpResponse('{"error":"Invalid meeting"}')
+    mile = Milestone.objects.create(name=request.POST['name'], meeting=meeting, time=request.POST['time'])
+    return HttpResponse('{ "id": "'+str(mile.pk)+'" }')
+
+@login_required
 def add_attendee(request, meeting_id, attendee_id):
     try:
         meeting = Meeting.objects.get(pk=meeting_id)

@@ -36,7 +36,12 @@
         $('#divide').click(function(){
             var divtime = dividetimer;
             dividetimer = 0;
-            $('.listing').append('<li>Time: '+formatTime(overalltime)+' Duration: '+formatTime(divtime)+'</li>');
+            var name = $('#milestone').val();
+            if ( !name )
+                return false;
+            $.post('/ajax/create_milestone/'+meeting+'/', {'name':name, 'time':overalltime}, function(data){
+                 $('.listing').append('<li>'+name+' ('+formatTime(overalltime)+')</li>');
+            });
             return false;
         });
         $('.pause').click(function(){
@@ -167,12 +172,14 @@
     <div class='eight offset-by-two columns'>
         <form method='post' action='#' class='nice custom' style='margin: 0'>
             <a href='#' class='radius blue button right nice' id='divide' style='margin-top: -4px;'>Add</a>
-            <input type='text' class='input-text large' placeholder='Milestone'>
+            <input type='text' class='input-text large' placeholder='Milestone' id='milestone'>
         </form>
     </div>
 </div>
 <div class='row'>
     <hr>
+    <ul class='listing'>
+    </ul>
 </div>
 {% endif %}
 {% endblock %}
