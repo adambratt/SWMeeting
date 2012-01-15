@@ -64,11 +64,12 @@
             $('.timelist').find('.active').removeClass('active');
             return false;
         });
-        $('.person-time').live('click',function(){
+        $('.person').live('click',function(){
+            var pt = $(this).find('.person-time');
             if (running == false){
                 $('.pause').text('Pause');
             }
-            var id = $(this).parent().attr('rel');
+            var id = pt.parent().attr('rel');
             if (currenttimer == id && running)
                 return false;
             // Log the last timer
@@ -84,8 +85,8 @@
             currenttimer = id;
             currenttime = 0;
             running = true;
-            $(this).addClass('active');
-            $(this).parent().find('.totaltime').stop().css("background-color", "#cc6").animate({ backgroundColor: "#666"}, 400);
+            pt.addClass('active');
+            pt.parent().find('.totaltime').stop().css("background-color", "#cc6").animate({ backgroundColor: "#666"}, 400);
             return false;
         });
         updateTimes();
