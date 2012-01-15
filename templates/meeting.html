@@ -39,7 +39,7 @@
             $('.listing').append('<li>Time: '+formatTime(overalltime)+' Duration: '+formatTime(divtime)+'</li>');
             return false;
         });
-        $('#pause').click(function(){
+        $('.pause').click(function(){
             if( !currenttimer)
                 return false;
             if ( running ){
@@ -51,7 +51,7 @@
             }
             return false;
         });
-        $('#reset').click(function(){
+        $('.reset').click(function(){
             running = false;
             overalltime = 0;
             currenttime = 0;
@@ -62,7 +62,7 @@
         });
         $('.person-time').live('click',function(){
             if (running == false){
-                $('#pause').text('Pause');
+                $('.pause').text('Pause');
             }
             var id = $(this).parent().attr('rel');
             if (currenttimer == id && running)
@@ -123,6 +123,10 @@
             </select>
         </div>
     </form>
+    <div class='eight columns'>
+        <a href='#' class='big red button right reset'>Reset</a>
+        <a href='#' class='big blue button right pause'>Resume</a>
+    </div>
 </div>
 <div class='row'>
     <hr>
@@ -142,8 +146,8 @@
 </div>
 <div class="row">
     <div class='four columns'>
-        <a href='#' class='big red button' id='reset'>Reset</a>
-        <a href='#' class='big blue button' id='pause'>Resume</a>
+        <a href='#' class='big red button reset'>Reset</a>
+        <a href='#' class='big blue button pause'>Resume</a>
     </div>
     <div class='five columns'>
         <a href='#' class='big blue button right nice' id='divide'>Add</a>
