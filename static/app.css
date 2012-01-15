@@ -105,3 +105,11 @@ form.nice {
 .person.selected {
     background: #e9f0e9;
 }
+
+.banner {
+    width: 970px;
+    background: url('images/bannerbg.png') no-repeat;
+    height: 260px;
+    margin-top: -15px;
+    padding-top: 30px;
+}
