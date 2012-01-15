@@ -21,9 +21,10 @@
     {% if x.overalltime %}['{{x.attendee.name}}', {v:{{x.overalltime}}, f:formatTime({{x.overalltime}})}],{% endif %}
     {% endfor %}
     ]);
-    var options = {'title':'How Much Pizza I Ate Last Night',
-                     'width':400,
-                     'height':300};
+    var options = {'title':'Speaking Percentage',
+                    'colors': ['#e0440e', '#e6693e', '#ec8f6e', '#f3b49f', '#f6c7b6', '#fff', '#000'],
+                     'width':450,
+                     'height':450};
     var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
       chart.draw(data, options);
   }
@@ -36,7 +37,7 @@
 </div>
 <div class='row'>
     <div class='six columns'>
-         <div id="chart_div" style="width:400; height:300"></div>
+         <div id="chart_div" style="width:450; height:450"></div>
     </div>
 </div>
 {% endblock %}
