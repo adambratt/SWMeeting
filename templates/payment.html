@@ -15,7 +15,9 @@
           
           var expiry = $('.card-expiry').split("/");
           if (expiry.length != 2 ){
-            $(".payment-errors").html("Expiration must be in MM/YYYY format");
+            $(".payment-errors").html("Expiration must be in MM/YYYY format").show();
+          } else {
+            $(".payment-errors").hide();
           }
           
           Stripe.createToken({
@@ -51,7 +53,7 @@
     <label>CVC</label>
     <input type="text" size="4" autocomplete="off" class="card-cvc input-text small" />
     <label>Expiration (MM/YYYY)</label>
-    <input type="text" size="2" class="card-expiry-month input-text small" /><span> / </span><input type="text" size="4" class="card-expiry-year input-text small" />
+    <input type="text" size="2" class="card-expiry input-text small" />
     </div>
     <button type="submit" class="submit-button">Submit Payment</button>
 </form>
