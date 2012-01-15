@@ -49,15 +49,28 @@
         }
     }
 </script>
-<form action="" method="POST" id="payment-form" class='custom nice'>
-    <div class='alert-box error payment-errors' style='display: none;'></div>
-    <label>Card Number</label>
-    <input type="text" size="20" autocomplete="off" class="card-number input-text" />
-    <label>CVC</label>
-    <input type="text" size="4" autocomplete="off" class="card-cvc input-text small" />
-    <label>Expiration (MM/YYYY)</label>
-    <input type="text" size="2" class="card-expiry input-text small" />
+<div class='row'>
+    <div class='twelve columns'>
+        <h2>Payment</h2>
+        <hr>
     </div>
-    <button type="submit" class="submit-button">Submit Payment</button>
-</form>
+</div>
+<div class='row'>
+    <div class='twelve columns'>
+        <p>
+            You've kicked the tires and given it a spin around the block. You've caught a whiff of burning rubber and you're eager for more. Get unlimited groups for a low monthly cost of <strong>only $3</strong>. Consider it like buying us a cup of coffee. We hope we've made your business life easier so far and we know we're sure to in the future.
+        </p>
+        <form action="" method="POST" id="payment-form" class='custom nice'>
+            <div class='alert-box error payment-errors' style='display: none;'></div>
+            <label>Card Number</label>
+            <input type="text" size="20" autocomplete="off" class="card-number input-text" />
+            <label>CVC</label>
+            <input type="text" size="4" autocomplete="off" class="card-cvc input-text small" />
+            <label>Expiration (MM/YYYY)</label>
+            <input type="text" size="2" class="card-expiry input-text small" />
+            </div>
+            <button type="submit" class="submit-button button green radius nice">Subscribe</button>
+        </form>
+    </div>
+</div>
 {% endblock %}
