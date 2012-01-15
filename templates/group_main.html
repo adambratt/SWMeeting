@@ -56,9 +56,9 @@
         {% else %}
         <p><i>No meetings</i></p>
         {% endif %}
-        {% if group.meeting_set.all.count and group.subbed == False %}
+        {% if group.meeting_set.all.count and group.subscribed == False %}
         <p>
-            Please <a href='/payment/'>subscribe</a> if you wish to create more than one group
+            Please <a href='/payment/'>subscribe</a> if you wish to create additional meetings
         </p>
         {% else %}
         <form method='post' action='#' class='custom nice'>
