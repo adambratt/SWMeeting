@@ -45,4 +45,8 @@
     margin-top: 5px;
 }
 
+form.nice {
+    margin: 0 !important;
+}
+
 
