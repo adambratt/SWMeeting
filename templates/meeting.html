@@ -180,7 +180,7 @@
     <hr>
     <ul class='listing'>
         {% for x in meeting.milestone_set.all %}
-        <li>{{x.name}} ({{x.overalltime}})</li>    
+        <li>{{x.name}} ({{x.time}})</li>    
         {% endfor %}
     </ul>
 </div>

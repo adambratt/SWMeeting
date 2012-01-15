@@ -5,7 +5,11 @@
  <!--Load the AJAX API-->
 <script type="text/javascript" src="https://www.google.com/jsapi"></script>
 <script type="text/javascript">
-
+    $(function(){
+       $(".timing").each(function(){
+            $(this).html(formatTime(parseInt($(this).html())));
+       });
+    });
   // Load the Visualization API and the piechart package.
   google.load('visualization', '1.0', {'packages':['corechart']});
   
@@ -40,6 +44,14 @@
 <div class='row'>
     <div class='six columns'>
          <div id="chart_div" style="width:450; height:450"></div>
+    </div>
+    <div class='six columns'>
+        <h3>Milestones</h3>
+        <ul>
+            {% for x in meeting.milestone_set.all %}
+            <li>{{x.name}} (<span class='timing'>{{x.time}}</span>)</li>    
+            {% endfor %}
+        </ul>
     </div>
 </div>
 {% endblock %}
