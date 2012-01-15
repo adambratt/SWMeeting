@@ -13,7 +13,7 @@
         
           var amount = 1000; //amount you want to charge in cents
           
-          var expiry = $('.card-expiry').split("/");
+          var expiry = $('.card-expiry').val().split("/");
           if (expiry.length != 2 ){
             $(".payment-errors").html("Expiration must be in MM/YYYY format").show();
           } else {
