@@ -120,9 +120,11 @@ form.nice {
 
 .screenshot {
     position: absolute;
-    top: 25px;
-    left: 50px;
-    border: 1px solid red;
+    top: 32px;
+    left: 75px;
+    border: 3px solid #e67a7a;
+    border-radius: 10px;
+    line-height: 0;
     float: left;
 }
 
