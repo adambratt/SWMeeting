@@ -126,6 +126,7 @@ form.nice {
     border-radius: 3px;
     line-height: 0;
     float: left;
+    box-shadow: 0px 0px 3px 3px #666;
 }
 
 .ribbon {
