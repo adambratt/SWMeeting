@@ -37,6 +37,10 @@
     margin-bottom: 15px;
 }
 
+.topbar.button {
+    margin-top: 3px;
+}
+
 .white {
     color: white;
 }
@@ -58,4 +62,13 @@ form.nice {
     border: 1px solid black;
     background: black;
     color: white;
+}
+
+.nice.pink.button {
+    background-color: #e67a7a;
+    border: 1px solid #cf6868;
+}
+
+.nice.pink.button:hover {
+    background-color: #cf6868;
 }
