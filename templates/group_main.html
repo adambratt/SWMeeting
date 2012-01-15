@@ -51,13 +51,16 @@
             {% endfor %}
         </ul>
         {% else %}
-            <i>No meetings</i>
+        <p><i>No meetings</i></p>
         {% endif %}
         <input type='text' name='meeting' value='add meeting' id='meeting' />
-        <a href='#' class='small button radius nice blue' id='add-meeting' >Add</a>
+        <a href='#' class='small button radius nice pink' id='add-meeting' >Add</a>
     </div>
     <div class='eight columns'>
-        <h3>Group Setup</h3>
+        <h3>Organization Setup</h3>
+        <p>
+            Add members to your organization before you go into the meeting
+        </p>
         <div class='row'>
             <div class='twelve columns'>
                 <form action='#'  method='post' class='nice custom'>
@@ -70,6 +73,7 @@
             </div>
         </div>
         {% if group.attendee_set.all.count %}
+        <div>
         <ul>
             {% for x in group.attendee_set.all %}
             <li>{{x.name}} ({{x.email}}) <a href='#'>delete</a></li>
