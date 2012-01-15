@@ -102,7 +102,7 @@
             dividetimer += 1;
         }
         $('.timelist .person').each(function(){
-            var tmptimer = $(this).find('.totaltime');
+            var tmptimer = $(this).find('.totaltime div');
             tmptimer.text(formatTime(tmptimer.attr('value')));
         });
         $('#fulltime').text(formatTime(overalltime));
