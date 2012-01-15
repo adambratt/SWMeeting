@@ -12,6 +12,12 @@ import stripe
 def home(request):
     if request.subdomain is not None:
         return group(request, request.subdomain)
+    if request.user.is_authenticated():    
+        try:
+            group = Group.objects.get(owner=request.user)
+            return group(request, group.urltag)
+        except Group.DoesNotExist:
+            pass
     return render(request,'index.html',{})
     
 def timer(request):
