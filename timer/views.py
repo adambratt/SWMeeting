@@ -49,7 +49,7 @@ def group(request, group_id):
 def payment(request):
     if request.method=='POST':
         token = request.POST['stripeToken']
-        stripe.api_key = "bpwTsZOTdx7UjmAjToKeXOQz9gvBGYll"
+        stripe.api_key = "EnS5d0IvJvYeTHmUpYz8saP5Wx5LZPm4"
         customer = stripe.Customer.create(card=token, plan="monthly", email=request.user.email)
         sub = Subscription.objects.create(user=request.user, stripe=customer.id)
         return redirect('/');
