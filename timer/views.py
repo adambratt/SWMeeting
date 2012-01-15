@@ -44,6 +44,10 @@ def group(request, group_id):
         return HttpResponse("Invalid Group!!")
     return render(request,'group_main.html',{'group':group, 'test':request.subdomain})
     
+@login_required
+def payment(request):
+    return render(request,'payment.html',{})
+    
 @csrf_protect
 def register(request):
     if request.method=='POST':
