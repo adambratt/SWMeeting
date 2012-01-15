@@ -54,9 +54,10 @@ def register(request):
             #new_user.first_name=form.cleaned_data['first_name']
             #new_user.last_name=form.cleaned_data['last_name']
             new_user.save()
-            new_user = authenticate(username=form.cleaned_data['username'], password=form.cleaned_data['password1'])
-            login(request, new_user)
-            group=Group.objects.create(name=form.cleaned_data['name'],urltag=form.cleaned_data['subdomain'], owner=new_user)
+            log_user = authenticate(username=form.cleaned_data['username'], password=form.cleaned_data['password1'])
+            login(request, log_user)
+            group=Group.objects.create(name=form.cleaned_data['name'],urltag=form.cleaned_data['username'], owner=new_user)
+            m=Attendee.objects.create(name=form.cleaned_data['username'],email=form.cleaned_data['email'],group=group)
             return redirect('http://'+group.urltag+'.meetrx.com');
     else:
         form=RegistrationForm()
