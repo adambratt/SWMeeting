@@ -120,11 +120,9 @@
     </div>
 </div>
 <div class='row'>
-    <form method='post' class='nice custom' action='#'>
-        <div class='four columns'>
-            <a href='#' class='nice button radius pink'>View Report</a>
-        </div>
-    </form>
+    <div class='four columns'>
+        <a href='#' class='nice button radius pink'>View Report</a>
+    </div>
     <div class='four columns'>
         <h3 id='fulltime' class='center'></h3>
     </div>
@@ -150,13 +148,15 @@
     </div>
     <div class='row'>
         <div class='four columns centered'>
-            <input type='submit' href='#' id='add-person' class='nice button radius white right' value='+'>
-            <select id='choose-person'>
-                <option value=''>Select Person</option>
-                {% for x in group.attendee_set.all %}
-                <option value='{{x.pk}}'>{{x.name}}</option>
-                {% endfor %}
-            </select>
+            <form method='post' class='nice custom' action='#'>
+                <input type='submit' href='#' id='add-person' class='nice button radius white right' value='+'>
+                <select id='choose-person'>
+                    <option value=''>Select Person</option>
+                    {% for x in group.attendee_set.all %}
+                    <option value='{{x.pk}}'>{{x.name}}</option>
+                    {% endfor %}
+                </select>
+            </form>
         </div>
     </div>
 </div>
