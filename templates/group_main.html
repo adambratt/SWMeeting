@@ -56,7 +56,7 @@
         {% else %}
         <p><i>No meetings</i></p>
         {% endif %}
-        {% if group.meeting_set.all.count and group.subscribed == False %}
+        {% if group.meeting_set.all.count and not group.subscribed %}
         <p>
             Please <a href='/payment/'>subscribe</a> if you wish to create additional meetings
         </p>
