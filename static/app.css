@@ -55,6 +55,11 @@ form.nice {
     margin: 0 !important;
 }
 
+.pinkbold {
+    font-weight: bold;
+    color: #E67A7A;
+}
+
 .center {
     text-align: center;
 }
