@@ -116,6 +116,8 @@ INSTALLED_APPS = (
 LOGIN_REDIRECT_URL = '/home/'
 LOGIN_URL = '/login/'
 
+CSRF_COOKIE_DOMAIN = '.meetrx.com'
+
 TEMPLATE_DIRS = (
     '/home/meeting/templates/',
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
