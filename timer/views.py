@@ -24,6 +24,12 @@ def timer(request):
     return
 
 @login_required
+def report(request, meeting_id):
+    if request.user:
+        pass
+    return render(request, 'report.html', {})
+
+@login_required
 def meeting(request, meeting_id):
     try:
         meeting = Meeting.objects.get(pk=meeting_id)
