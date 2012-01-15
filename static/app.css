@@ -126,7 +126,24 @@ form.nice {
     border-radius: 3px;
     line-height: 0;
     float: left;
-    box-shadow: 0px 0px 3px 3px #666;
+    box-shadow: 0px 1px 3px 1px #aaa;
+}
+
+.banner-p {
+    position: absolute;
+    float: left;
+    right: 75px;
+    top: 150px;
+    color: white;
+    text-shadow: 0px 1px 1px #aaa;
+}
+
+.banner-title {
+    float: left;
+    position: absolute;
+    text-shadow: 0px 1px 1px #fff;
+    right: 75px;
+    top: 50px;
 }
 
 .ribbon {
