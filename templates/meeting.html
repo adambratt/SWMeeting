@@ -20,7 +20,7 @@
                 if (! $('.person[rel='+personid+']').length){
                     $.get('/ajax/add_attendee/'+meeting+'/'+personid+'/',function (data){
                         var last = $('.timelist').children(':last');
-                        var code = "<div class='four columns person' rel='"+personid+"'><a href='#' class='big blue button person-time'>"+person+"</a><div class='totaltime' value='0'>0:00</div></div>";
+                        var code = "<div class='four columns person' rel='"+personid+"'><a href='#' class='nice radius blue button person-time'>"+person+"</a><div class='totaltime' value='0'>0:00</div></div>";
                         if (last.children().length > 2){
                             $('<div class="row">'+code+'</div>').insertAfter(last);
                         } else {
