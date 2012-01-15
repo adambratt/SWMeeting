@@ -54,7 +54,7 @@
             <i>No meetings</i>
         {% endif %}
         <input type='text' name='meeting' value='add meeting' id='meeting' />
-        <a href='#' class='small button blue' id='add-meeting' >Add</a>
+        <a href='#' class='small button radius nice blue' id='add-meeting' >Add</a>
     </div>
     <div class='eight columns'>
         <h3>Group Setup</h3>
@@ -62,7 +62,7 @@
             <div class='twelve columns'>
                 <div>Name: <input type='text' name='name' id='attendee-name' /></div>
                 <div>Email (optional): <input type='text' name='email' id='attendee-email' /></div>
-                <div><a href='#' id='attendee-add'>Add</a></div>
+                <div><a href='#' id='attendee-add' class='pink button radius nice big'>Add</a></div>
             </div>
         </div>
         {% if group.attendee_set.all.count %}
