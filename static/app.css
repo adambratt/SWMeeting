@@ -123,7 +123,7 @@ form.nice {
     top: 32px;
     left: 75px;
     border: 3px solid #e67a7a;
-    border-radius: 10px;
+    border-radius: 3px;
     line-height: 0;
     float: left;
 }
