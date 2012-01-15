@@ -179,6 +179,9 @@
 <div class='row'>
     <hr>
     <ul class='listing'>
+        {% for x in meeting.milestone_set.all %}
+        <li>{{x.name}} ({{x.overalltime}})</li>    
+        {% endfor %}
     </ul>
 </div>
 {% endif %}
